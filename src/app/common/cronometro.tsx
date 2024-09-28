@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import ButtonSwitch from "./buttonSwitch";
+import ButtonsGlobal from "./buttonsGlobal";
 
 interface CronometroProps {
   timer: number;
+  isPomo: boolean
 }
 
-export default function Cronometro({ timer }: CronometroProps) {
+export default function Cronometro({ timer, isPomo }: CronometroProps) {
   const [time, setTime] = useState(timer);
   const [isActive, setIsActive] = useState(false);
   const [endTimePomo, setEndTimePomo] = useState(false);
@@ -39,27 +42,19 @@ export default function Cronometro({ timer }: CronometroProps) {
       <div className="text-8xl text-white">
         {time > 0 ? time :
           <div>
-            <div className="text-3xl">Pomo Concluido!</div>
+            <div className="text-3xl">Concluido!</div>
           </div>
         }
       </div>
 
       <div className="flex gap-2">
         {endTimePomo===true ?
-          <button
-            className="text-base bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 border-b-4 border-red-800 hover:border-red-600 rounded"
-            onClick={() => {setTime(timer) ;  setEndTimePomo(false)}}
-          >   reniciar
-          </button>
+          <ButtonsGlobal isPomo={isPomo} onClick={() => {setTime(timer) ;  setEndTimePomo(false)}} />
           :
-          <button
-            onClick={toggle}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 border-b-4 border-red-800 hover:border-red-600 rounded"
-          >
-            {isActive ? "PAUSAR" : "INICIAR"}
-          </button>
+          <ButtonSwitch isActive={isActive} isPomo={isPomo} onClick={toggle} />
         }
       </div>
+      
     </div>
   );
 }
