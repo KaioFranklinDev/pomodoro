@@ -25,7 +25,7 @@ export default function Home() {
       <div className="flex flex-col items-center text-center justify-center gap-4">
         <header className="flex justify-between w-full">
           <div>Pomofocus</div>
-          <SettingsPomo valorPomo={pomoHandler} isPomo={isPomo} alterarValorPomo={setPomoHandler} />
+          <SettingsPomo valorPomo={pomoHandler} valorBreak={braekHandler} alterarValorBreak={setBraekHandler} isPomo={isPomo} alterarValorPomo={setPomoHandler} />
         </header>
         <div className={`flex flex-col h-72 w-96 justify-between items-center p-4 rounded ${isPomo===true?"bg-red-400":"bg-blue-400"}`}>
           <div className="flex flex-row  gap-4">
